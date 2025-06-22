@@ -1,10 +1,3 @@
-try:
-    import getpass
-    
-except ImportError:
-    print("Ce programme a besoin que le module 'getpass' soit installé")
-    exit()
-    
 from program.game_styles import multi
 
 print("Welcome to Hanged Game")
