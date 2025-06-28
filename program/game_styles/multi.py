@@ -39,6 +39,7 @@ def multi_player():
                             game_loop = True
                             life = 8
                             enter_hidden_word = False
+                            
                     else:
                         game_loop = False
                         running = False
