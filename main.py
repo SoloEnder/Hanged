@@ -5,13 +5,13 @@ except ImportError:
     print("Ce programme a besoin que le module 'getpass' soit installé")
     exit()
     
-from program.game_styles import multi
+from program.game_styles.multi import multi_player
 
 print("Welcome to Hanged Game")
 class Game:
     
     def __init__(self):
-        self.multi = multi
+        self.multi = multi_player
     
     def new_game(self):
         mod_loop = True
@@ -21,7 +21,7 @@ class Game:
             mod_choice = input("\n=== Mod ===\n1) Multi-player\n2) Back\n")
             
             if mod_choice == "1":
-                self.multi.multi_player()
+                self.multi()
                 
             elif mod_choice == "2":
                 mod_loop = False
