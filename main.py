@@ -2,6 +2,7 @@ try:
     
     import getpass
     import tkinter as tk
+    from tkinter.messagebox import askyesno
     
 except ImportError:
     print("Ce programme a besoin que les modules 'getpass' et 'tkinter' soient installés")
@@ -15,15 +16,22 @@ from program.game_styles.multi import multi_player
 class Game:
     
     def multi(self):
-        multi_player(self)
+        multi_player(self, tk)
+        
+    def quit_game(self):
+        exit_confirm = askyesno(message="Voulez vous vraiment quitter ?")
+        
+        if exit_confirm == True:
+            self.w.destroy()
     
     def __init__(self):
         self.w = tk.Tk()
+        self.w.protocol("WM_DELETE_WINDOW", self.quit_game)
         
         # La frame pour la saisie de carractères et l'affichage des erreurs
         self.entry_errors_fr = tk.Frame(self.w)
         self.entry_errors_fr.grid(row=0)
-        self.entry_lbl = tk.Label(self.entry_errors_fr, text="Entrez le mot que les autres joueurs devront deviner")
+        self.entry_lbl = tk.Label(self.entry_errors_fr, text="Entrez le mot que les autres joueurs devront deviner", width=80)
         self.entry_lbl.grid(row=0, pady=20, padx=10)
         self.entry_e = tk.Entry(self.entry_errors_fr, show="*")
         self.entry_e.grid(row=1)

@@ -1,14 +1,15 @@
 import json
-from tkinter.messagebox import*
+from tkinter.messagebox import showinfo
 alph = "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZzàäéèêëÿùç-'"
 
 def base(func):
     
-    def wrapper(self):
+    def wrapper(self, tk):
                     
         def game():
             find = False
             tried_letter = self.entry_e.get()
+            self.entry_e.delete(0, tk.END)
             
             if len(tried_letter) == 1 and tried_letter in alph:
                 
@@ -55,7 +56,7 @@ def base(func):
         with open("program/assets/pendu_img.json", "r") as f:
             pendu_img = json.load(f)
                    
-        hidden_word = func(self)
+        hidden_word = func(self, tk)
         alph_error = False
         hidden_word_list = []
         find_list = []
@@ -71,16 +72,20 @@ def base(func):
                         
                 else:
                     alph_error = True
+                    
+                print(alph_error)
                         
-                if alph_error == False:
-                    self.error_lbl.config(text="")
-                    self.life_lbl.config(textvariable=self.life_intv)
-                    self.life_lbl.grid(row=2)
-                    self.enter_b.config(command=game)
-                    self.entry_lbl.config(text="Essayez de deviner une lettre")
-                                            
-                else:
-                    self.error_lbl.config(text="Le mot ne doit comporter que des lettres de l'alphabet et les caractères àäéèêëÿùç-'")
+            if alph_error == False:
+                self.error_lbl.config(text="")
+                self.life_lbl.config(textvariable=self.life_intv)
+                self.life_lbl.grid(row=2)
+                self.enter_b.config(command=game)
+                self.entry_lbl.config(text="Essayez de deviner une lettre")
+                self.entry_e.config(show="")
+                self.entry_e.delete(0, tk.END)
+                                             
+            else:
+                self.error_lbl.config(text="Le mot ne doit comporter que des lettres de l'alphabet et les caractères àäéèêëÿùç-'")
                 
         else:
             self.error_lbl.config(text="Vous devez entrer un mot")
