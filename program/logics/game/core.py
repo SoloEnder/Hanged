@@ -1,5 +1,3 @@
-import json
-from tkinter.messagebox import showinfo
 import tkinter as tk
 alph = "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZzàäéèêëÿùç-'"
 
