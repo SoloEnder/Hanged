@@ -26,7 +26,6 @@ class Window(tk.Tk):
         self.game_in_progress = False
         
     def switch_menu_fr(self):
-        attr_list = ["g1", "gf2", "gf3", "gf4"]
         
         if hasattr(self, "gf1"):
             self.gf1.destroy()

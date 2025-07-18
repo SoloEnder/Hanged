@@ -30,5 +30,6 @@ v{vinfos["current_version"]["exact"] if vinfos is not None else "unknown version
         self.releases_link_b = tk.Button(self, text="Toutes les versions", command=lambda: open_link_f("https://github.com/SoloEnder/Hanged/releases"))
         self.releases_link_b.grid(row=1, column=0, sticky="w", padx=50)
         self.git_page_b = tk.Button(self, text="Page du projet", command=lambda: open_link_f("https://github.com/SoloEnder/Hanged/"))
-        self.git_page_b.grid(row=1, column=0, sticky="e")    
+        self.git_page_b.grid(row=1, column=0, sticky="e")
+        self.master.switch_menu_fr()
             
