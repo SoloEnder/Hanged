@@ -1,2 +1,2 @@
 # Hanged
-The Hanged game with new features 
+The Hanged game with graphical user interface !
