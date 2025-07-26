@@ -12,6 +12,7 @@ class Window(tk.Tk):
     """Link all frame in this class and init the window
         - Menu frames
         - Game frames
+        - About frames
     """
     
     def __init__(self):
@@ -26,6 +27,10 @@ class Window(tk.Tk):
         self.game_in_progress = False
         
     def switch_menu_fr(self):
+        self.game_in_progress = False
+        
+        if hasattr(self, "tp1"):
+            self.tp1.destroy()
         
         if hasattr(self, "gf1"):
             self.gf1.destroy()
@@ -38,6 +43,9 @@ class Window(tk.Tk):
             
         if hasattr(self, "gf4"):
             self.gf4.destroy()
+            
+        if hasattr(self, "af1"):
+            self.af1.destroy()
             
         self.mf1 = MenuFrame1(self)
         self.mf1.grid(row=0, column=0)
