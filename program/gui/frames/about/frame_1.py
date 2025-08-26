@@ -1,6 +1,7 @@
 import tkinter as tk
 import json
 from program.logics.about.open_link import open_link_f
+from ....logics.utils import path_maker
 
 class AboutFrame1(tk.Frame):
     
@@ -12,7 +13,8 @@ class AboutFrame1(tk.Frame):
         self.rowconfigure(1, weight=1)
         self.columnconfigure(1, weight=1)
         
-        self.game_icon_img = tk.PhotoImage(file="program/assets/pendu/0.png")
+        file_path = path_maker.make_path(__file__, "../../../assets/pendu/0.png")
+        self.game_icon_img = tk.PhotoImage(file=file_path) if file_path != None else None
         self.game_title_lb = tk.Label(self)
         self.game_title_lb.image = self.game_icon_img
         self.game_title_lb.config(image=self.game_icon_img, text="Hanged Game\nv2.0.0", compound=tk.LEFT, font=("default 14"), bg="white")

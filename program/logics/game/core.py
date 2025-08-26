@@ -1,4 +1,5 @@
 import tkinter as tk
+from ..utils import path_maker
 alph = "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZzàäéèêëÿùç-'"
 
 hidden_word_list = []
@@ -69,7 +70,8 @@ def true_hanged(self):
             else:
                 self.error_lbl.config(text=f"La lettre {tried_letter} n'est pas dans le mot mystère", fg="red")
                 self.master.gf3.life_intv.set(self.master.gf3.life_intv.get() - 1)
-                pendu_img = tk.PhotoImage(file=f"program/assets/pendu/{self.master.gf3.life_intv.get()}.png")
+                file_path = path_maker.make_path(__file__, f"../../assets/pendu/{self.master.gf3.life_intv.get()}.png") 
+                pendu_img = tk.PhotoImage(file=file_path) if file_path != None else None
                 self.master.gf2.pendu_lb.image = pendu_img
                 self.master.gf2.pendu_lb.config(image=pendu_img)
                         

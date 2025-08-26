@@ -1,4 +1,5 @@
 import tkinter as tk
+from ....logics.utils import path_maker
 
 class GameFrame4(tk.Frame):
     
@@ -7,9 +8,12 @@ class GameFrame4(tk.Frame):
        self["bg"] = "white"
        self.columnconfigure(0, weight=1)
        self.rowconfigure(0, weight=1)
+       
        self.victory_bov = tk.BooleanVar(self, False)
-       self.victory_img = tk.PhotoImage(file="program/assets/end_game/victory_crown.png")
-       self.defeat_img = tk.PhotoImage(file="program/assets/end_game/defeat_skull.png")
+       self.victory_img_path = path_maker.make_path(__file__, "../../../assets/end_game/victory_crown.png")
+       self.victory_img = tk.PhotoImage(file=self.victory_img_path) if self.victory_img_path != None else None
+       self.defeat_img_path = path_maker.make_path(__file__, "../../../assets/end_game/defeat_skull.png")
+       self.defeat_img = tk.PhotoImage(file=self.defeat_img_path) if self.defeat_img_path != None else None
        self.end_game_lb = tk.Label(self, bg="white")
        self.end_game_lb_2 = tk.Label(self, bg="white", text=" ")
        self.return_menu_b = tk.Button(self, text="Menu", command=self.master.switch_menu_fr)
